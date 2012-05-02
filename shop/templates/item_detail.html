@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if item %}
+<table>
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Description</td>
+			<td>Price</td>
+			<td>In Stock</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{item.name}}</td>
+			<td>{{item.description}}</td>
+			<td>{{item.price}}</td>
+			<td>{% if item.onHand > 0 %}In Stock{% else %}Out of Stock{% endif %}</td>
+		</tr>
+	</tbody>
+</table>
+{% else %}
+No item found.
+{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{% for item in items %}
+	<li><a href="/shop/{{item.id}}">{{item.name}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
