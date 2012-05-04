@@ -6,4 +6,7 @@ urlpatterns = patterns('',
     # so no slash is needed in front
     (r'^$','shop.views.index'),
     (r'^(\d+)/$', 'shop.views.item'),
+    (r'^add/(\d+)/$', 'shop.views.add'),
+    (r'^cart/$', 'shop.views.view_cart'),
+    (r'^checkout/$', 'shop.views.checkout'),
 )

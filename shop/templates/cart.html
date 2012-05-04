@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if items %}
+{% for lineitem in items %}
+	{{lineitem.item.name}}
+	{{lineitem.quantity}}
+{% endfor %}
+<a href="/shop/checkout">Checkout</a>
+{% else %}
+No items in cart.
+{% endif %}
+{% endblock %}

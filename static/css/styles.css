@@ -1,0 +1,20 @@
+form p
+{
+	position: relative;
+}
+
+form p label {
+	display: block;
+	text-transform: uppercase;
+	margin: 0.5em 0;
+}
+
+form p input {
+	display: block;
+}
+
+.form {
+	border-top: 1px solid #995;
+	border-bottom: 1px solid #995;
+	background-color: #BB8;
+}

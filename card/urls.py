@@ -10,8 +10,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'card.views.home', name='home'),
     url(r'^shop/', include('shop.urls')),
-
-    url(r'^login/', 'card.views.login'),
+    url(r'^register/', 'card.views.register'),
+    url(r'^login/', 'card.views.auth_login'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

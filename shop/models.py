@@ -10,10 +10,10 @@ class Item(models.Model):
 	price = models.FloatField(default=0.0)
 
 class LineItem(models.Model):
-	item = models.OneToOneField('Item')
+	item = models.ForeignKey('Item', unique=False)
 	quantity = models.IntegerField(default=0)
-	order = models.ForeignKey('Order')
+	order = models.ForeignKey('Order', null=True)
 
-class Order(models.Model): 
-	userProfile = models.OneToOneField(UserProfile)
+class Order(models.Model):
 	created = models.DateField(default=datetime.datetime.now())
+	userProfile = models.ForeignKey(UserProfile, unique=False)
