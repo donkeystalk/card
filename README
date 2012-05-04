@@ -4,6 +4,13 @@ running locally:
 
 make sure to change the following settings in settings.py:
 
+Required libraries:
+
+django-flash
+https://github.com/danielfm/django-flash
+
+Install to local python distro (normal python setup.py install should work fine)
+
 STATICFILES_DIRS
 
 this should point to card/static, but since these locations must be absolute, make this an absolute path.
