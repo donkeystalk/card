@@ -1,0 +1,13 @@
+django cart implementation
+
+running locally:
+
+make sure to change the following settings in settings.py:
+
+STATICFILES_DIRS
+
+this should point to card/static, but since these locations must be absolute, make this an absolute path.
+
+TEMPLATE_DIRS
+
+this should point to card/templates, again this needs to be an absolute path, so change it to one that applies to your local install.
