@@ -9,6 +9,9 @@ urlpatterns = patterns('',
 	#url(r'^$', )
     # Examples:
     # url(r'^$', 'card.views.home', name='home'),
+    (r'^$','shop.views.index'),
+    (r'cart', 'shop.views.view_cart'),
+    (r'checkout', 'shop.views.checkout'),
     url(r'^shop/', include('shop.urls')),
     url(r'^register/', 'card.views.register'),
     url(r'^login/', 'card.views.auth_login'),

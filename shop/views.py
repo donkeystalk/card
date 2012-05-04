@@ -34,7 +34,7 @@ def checkout(request):
 	quantityChanged = False
 	userProfile = UserProfile.objects.get(user=request.user)
 	if not request.session.get(settings.CART_KEY):
-		return redirect('/shop/cart')
+		return redirect('/cart')
 	lineItems = line_items_from_cart(request)
 	for li in lineItems:
 		li.item = Item.objects.get(pk=li.item_id)
@@ -44,7 +44,7 @@ def checkout(request):
 			request.flash[li.item.name] = 'Quantity on hand for %s is less than ordered, order changed to the number on hand.' % li.item.name
 	if quantityChanged:
 		request = update_cart_with_list_line_item(request, lineItems)
-		return redirect('/shop/cart', context_instance=RequestContext(request))
+		return redirect('/cart', context_instance=RequestContext(request))
 	order = Order(userProfile=userProfile)
 	order.save()
 	for li in lineItems:
@@ -54,7 +54,7 @@ def checkout(request):
 		update_item.onHand -= li.quantity
 		update_item.save()
 	request.session[settings.CART_KEY] = None
-	return render_to_response('checkout.html', {'order': order})
+	return render_to_response('checkout.html', {'order': order}, context_instance=RequestContext(request))
 
 
 def add(request, itemId):
@@ -65,14 +65,12 @@ def add(request, itemId):
 		item = Item.objects.get(pk=itemId)
 		if item.onHand <= 0:
 			request.flash['message'] = 'Item %s is out of stock.' % item.name
-			return redirect('/shop/cart', context_instance=RequestContext(request))
+			return redirect('/cart', context_instance=RequestContext(request))
 		if itemId in cart:
-			logger.info('adding 1 to quantity %s' % cart[itemId].quantity)
 			cart[itemId].quantity += 1
-			logger.info('quantity %s' % request.session[settings.CART_KEY][itemId].quantity)
 		else:
 			cart[itemId] = LineItem(item=item, quantity=1, order=None)
 	except Item.DoesNotExist:
 		request.flash['message'] = 'Item %s added does not exist, please select a different item.' % itemId
 	request.session[settings.CART_KEY] = cart
-	return redirect('/shop/cart', context_instance=RequestContext(request))
+	return redirect('/cart', context_instance=RequestContext(request))
