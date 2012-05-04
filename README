@@ -1,15 +1,15 @@
 django cart implementation
 
-running locally:
-
-make sure to change the following settings in settings.py:
+Required libraries:
 
 django-flash
 https://github.com/danielfm/django-flash
 
 Install to local python distro (normal python setup.py install should work fine)
 
-Required libraries:
+Running Locally
+
+Make sure to change the following settings in settings.py:
 
 STATICFILES_DIRS
 
