@@ -18,5 +18,13 @@ def view_orders(request):
 
 @login_required
 def view_individual_order(request, orderId):
-	user_profile = UserProfile.objects.get(user=request.user)
-	
+	user_profile = request.session[settings.USER_PROFILE_KEY]
+	order = Order.objects.get(pk=orderId)
+	items = []
+	if order.userProfile_id == user_profile.id:
+		items = LineItem.objects.filter(order=order)
+		order = Order.objects.get(pk=orderId)
+	else:
+		order = None
+		request.flash['message'] = 'No order found for %s.' % orderId
+	return render_to_response('individual_order.html', {'order':order, 'items':items}, context_instance=RequestContext(request))

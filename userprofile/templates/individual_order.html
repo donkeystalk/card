@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if order %}
+Order : {{order.id}}
+
+{% for li in items %}
+	<h3>Name:</h3>
+	<span>{{li.item.name}}</span>
+	<h3>Quantity:</h3>
+	<span>{{li.quantity}}</span>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for order in orders %}
-	{{order.id}}
+	<a href="/orders/{{order.id}}">{{order.id}}</a>
 {% endfor %}
 
 {% endblock %}

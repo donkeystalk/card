@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     url(r'^shop/', include('shop.urls')),
     url(r'^register/', 'card.views.register'),
     url(r'^login/', 'card.views.auth_login'),
-    url(r'^order', 'userprofile.views.view_orders'),
-    url(r'^order/(\d+)', 'userprofile.views.view_individual_order')
+    url(r'^orders$', 'userprofile.views.view_orders'),
+    url(r'^orders/(\d+)/$', 'userprofile.views.view_individual_order')
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
