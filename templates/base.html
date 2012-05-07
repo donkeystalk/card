@@ -15,6 +15,12 @@
 		</ul>
 		<a href="/cart">View Cart</a>
 	</nav>
+	{% if user.username %}
+		Welcome back <span class="user">{{user.username}}</span>
+		<a href="/logout">Logout</a>
+	{% else %}
+		<a href="/login">Login</a>
+	{% endif %}
 </header>
 {% if flash.message %}
     <!-- There's a flash-scoped object under the 'message' key -->

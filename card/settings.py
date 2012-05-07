@@ -94,6 +94,7 @@ TEMPLATE_LOADERS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'djangoflash.context_processors.flash',
     'django.core.context_processors.request',
+    'card.user_context_processor.user',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,6 +121,8 @@ TEMPLATE_DIRS = (
 )
 
 CART_KEY = 'cart'
+
+USER_PROFILE_KEY = 'up_key'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

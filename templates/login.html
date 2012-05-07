@@ -4,7 +4,9 @@
 
 <form action="/login/" method="POST">{% csrf_token %}
 	{{login_form.as_p}}
+	{% if request.path != '/login/' %}
 	<input type="hidden" name="next" value="{{request.path}}" />
+	{% endif %}
 	<input type="submit" value="Login" />
 </form>
 <a href="/register">Register here!</a>

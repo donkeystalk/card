@@ -4,7 +4,7 @@ from userprofile.forms import AddressForm
 from django.template import RequestContext
 from django.core.exceptions import ValidationError
 from userprofile.models import UserProfile
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 import logging
 
 logger = logging.getLogger('card.userprofile.views')
@@ -28,6 +28,10 @@ def auth_login(request):
 	return render_to_response('login.html',
 							  {'login_form':login_form},
 							  context_instance=RequestContext(request))
+
+def auth_logout(request):
+	logout(request)
+	return redirect('/')
 
 def register(request):
 	user_form = UserCreationForm(prefix='user')

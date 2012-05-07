@@ -14,7 +14,7 @@ logger = logging.getLogger('card.shop.views')
 
 def index(request):
 	items = Item.objects.all()
-	return render_to_response('index.html', {'items':items})
+	return render_to_response('index.html', {'items':items}, context_instance=RequestContext(request))
 
 def item(request, itemId):
 	try:
