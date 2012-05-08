@@ -49,6 +49,10 @@ def checkout(request):
 	userProfile = UserProfile.objects.get(user=request.user)
 	if not request.session.get(settings.CART_KEY):
 		return redirect('/cart')
+	cart = request.session[settings.CART_KEY]
+	if not cart:
+		request.flash['message'] = 'No items in cart to checkout with.'
+		return redirect('/cart', context_instance=RequestContext(request))
 	lineItems = line_items_from_cart(request)
 	for li in lineItems:
 		li.item = Item.objects.get(pk=li.item_id)
