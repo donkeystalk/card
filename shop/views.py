@@ -29,6 +29,20 @@ def view_cart(request):
 							  {'items' : items},
 							  context_instance=RequestContext(request))
 
+def remove_item(request, item_id):
+	cart = request.session.get(settings.CART_KEY)
+	if not cart:
+		request.flash['message'] = 'No items to remove from your cart.'
+		return redirect('/cart', context_instance=RequestContext(request))
+	try:
+		lineitem = cart[item_id]
+		del cart[item_id]
+		request.flash['message'] = 'Item %s was removed from your cart.' % lineitem.item.name
+		request.session[settings.CART_KEY] = cart
+	except KeyError:
+		request.flash['message'] = 'No item with id %s was found in cart.' % item_id
+	return redirect('/cart', context_instance=RequestContext(request))
+
 @login_required
 def checkout(request):
 	quantityChanged = False

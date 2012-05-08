@@ -10,12 +10,13 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'card.views.home', name='home'),
     (r'^$','shop.views.index'),
-    (r'cart', 'shop.views.view_cart'),
-    (r'checkout', 'shop.views.checkout'),
-    (r'logout', 'card.views.auth_logout'),
+    (r'^cart$', 'shop.views.view_cart'),
+    (r'^cart/remove/(\d+)/$', 'shop.views.remove_item'),
+    (r'^checkout$', 'shop.views.checkout'),
+    (r'^logout$', 'card.views.auth_logout'),
     url(r'^shop/', include('shop.urls')),
-    url(r'^register/', 'card.views.register'),
-    url(r'^login/', 'card.views.auth_login'),
+    url(r'^register/$', 'card.views.register'),
+    url(r'^login/$', 'card.views.auth_login'),
     url(r'^orders$', 'userprofile.views.view_orders'),
     url(r'^orders/(\d+)/$', 'userprofile.views.view_individual_order')
 

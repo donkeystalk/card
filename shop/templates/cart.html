@@ -10,6 +10,7 @@
 			<td>Description</td>
 			<td>Quantity</td>
 			<td>Price</td>
+			<td>Remove</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,6 +20,7 @@
 				<td>{{lineitem.quantity}}</td>
 				<td>{{lineitem.item.description}}</td>
 				<td>{{lineitem.item.price|mult:lineitem.quantity}}</td>
+				<td><a href="/cart/remove/{{lineitem.item.id}}">Remove</a></td>
 			</tr>
 		{% endfor %}
 	</tbody>
