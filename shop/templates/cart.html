@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load math_extras %}
 {% if items %}
-{% for lineitem in items %}
-	{{lineitem.item.name}}
-	{{lineitem.quantity}}
-{% endfor %}
+<table>
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Description</td>
+			<td>Quantity</td>
+			<td>Price</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for lineitem in items %}
+			<tr>
+				<td>{{lineitem.item.name}}</td>
+				<td>{{lineitem.quantity}}</td>
+				<td>{{lineitem.item.description}}</td>
+				<td>{{lineitem.item.price|mult:lineitem.quantity}}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
 <a href="/checkout">Checkout</a>
 {% else %}
 No items in cart.

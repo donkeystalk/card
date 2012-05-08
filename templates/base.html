@@ -4,8 +4,11 @@
 	<title>Testing</title>
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.0/build/cssreset/cssreset-min.css">
 	<link rel="stylesheet" href="/static/css/styles.css" />
+	{% block imports %}
+	{% endblock %}
 </head>
 <body>
+	{% load math_extras %}
 <header>
 	<nav>
 		<ul>
